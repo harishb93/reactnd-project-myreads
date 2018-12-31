@@ -52,6 +52,7 @@ class App extends Component {
           )}/>
           <Route path='/search' render= {({history}) => (
               <SearchBook
+                books={books}
                 moveToShelf={(currentShelf,toShelf,book)=>{
                   this.changeShelf(currentShelf,toShelf,book);
                   history.push('/');
