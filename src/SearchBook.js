@@ -7,7 +7,8 @@ class SearchBook extends Component{
 
   state = {
     query : '',
-    allBooks: []
+    allBooks: [],
+    existingBookIds: []
   }
 
   updateQuery = (query) => {
@@ -18,19 +19,25 @@ class SearchBook extends Component{
   }
 
   searchQuery = (query)=> {
+    const bookIds=this.props.books.map((b)=> b.id)
     query === '' ? this.setState({
-        allBooks:[]
+        allBooks:[],
+        existingBookIds: bookIds
     }):
     BooksAPI.search(query).then(result=> {
+
       Array.isArray(result)
-      ? this.setState({
-      allBooks:result
-    })
+      ?
+      this.setState({
+        allBooks:result,
+        existingBookIds: bookIds
+      })
     : this.setState({
     allBooks: []
   })
   });
   }
+
 
   onHandleSearch = (currentShelf,toShelf,bookId) => {
 
@@ -43,7 +50,7 @@ class SearchBook extends Component{
 
   render(){
 
-    const {allBooks,query} = this.state;
+    const {allBooks,query,existingBookIds} = this.state;
 
     return(
 
@@ -60,7 +67,8 @@ class SearchBook extends Component{
         <div className="search-books-results">
           <ol className="books-grid">
             {allBooks.map((book)=>(
-              <li key={book.id}>
+               existingBookIds.includes(book.id) === false &&
+              (<li key={book.id}>
                 <div className="book">
                   <div className="book-top">
                     { book.imageLinks !== undefined ?
@@ -80,6 +88,7 @@ class SearchBook extends Component{
                   {book.authors!== undefined ? <div className="book-authors">{book.authors.join(" , ")}</div> : <div className="book-authors"></div>}
                 </div>
               </li>
+              )
             ))}
           </ol>
         </div>
