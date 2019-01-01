@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import * as BooksAPI from './BooksAPI';
 import './App.css';
-import {Route} from 'react-router-dom';
+import {Route,Switch} from 'react-router-dom';
 import BooksPage from './BooksPage';
 import SearchBook from './SearchBook';
 import { withAlert } from 'react-alert'
@@ -44,23 +44,24 @@ class App extends Component {
 
     return (
       <div className="app">
-        <Route exact path='/' render={() => (
-            <BooksPage
-              books={books}
-              onShelfChange={this.changeShelf}
-              />
-          )}/>
-          <Route path='/search' render= {({history}) => (
-              <SearchBook
+        <Switch>
+          <Route exact path='/' component={() => (
+              <BooksPage
                 books={books}
-                moveToShelf={(currentShelf,toShelf,book)=>{
-                  this.changeShelf(currentShelf,toShelf,book);
-                  history.push('/');
-                }}
+                onShelfChange={this.changeShelf}
                 />
             )}/>
-
-          </div>
+          <Route path='/search' component= {({history}) => (
+                <SearchBook
+                  books={books}
+                  moveToShelf={(currentShelf,toShelf,book)=>{
+                    this.changeShelf(currentShelf,toShelf,book);
+                    history.push('/');
+                  }}
+                  />
+              )}/>
+        </Switch>
+      </div>
         )
       }
     }
