@@ -38,7 +38,7 @@ A new browser window should automatically open displaying the app. If it doesn't
 
 _Note: The backend API is limited to a fixed set of [search terms](#search-terms) -- see below for valid search options_
 
-![Search Screen](src/SearchBook.JPG "search")
+![Search Screen](src/Search.JPG "search")
 
 ### Resources and Documentation:
 
