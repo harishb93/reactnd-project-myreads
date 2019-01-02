@@ -25,20 +25,20 @@ npm start
 
 A new browser window should automatically open displaying the app. If it doesn't, navigate to [http://localhost:3000/](http://localhost:3000/) in your browser
 
-![Load Screen](src/MainPage.jpg "load screen")
+![Load Screen](src/MainPage.JPG "load screen")
 
 ## How to Use the App
 
 - Books are sorted into three categories: Currently Reading, Want to Read and Read
 - To change a book's category or remove a book from the list, click on the green button on the book cover and select the shelf
-  ![Change menu](src/MoveBook.jpg "change")
+  ![Change menu](src/MoveBook.JPG "change")
 
 - To add new books, click on the green + button at the bottom of the page.
   Enter an author's name or subject. Up to 20 items will be returned.
 
 _Note: The backend API is limited to a fixed set of [search terms](#search-terms) -- see below for valid search options_
 
-![Search Screen](src/SearchBook.jpg "search")
+![Search Screen](src/SearchBook.JPG "search")
 
 ### Resources and Documentation:
 
